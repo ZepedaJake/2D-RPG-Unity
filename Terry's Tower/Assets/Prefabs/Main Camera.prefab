@@ -1,0 +1,253 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1050025798932180}
+  m_IsPrefabParent: 1
+--- !u!1 &1050025798932180
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4074929073522852}
+  - component: {fileID: 20869256908045782}
+  - component: {fileID: 92972170286329320}
+  - component: {fileID: 124000650411119208}
+  - component: {fileID: 81699892038969742}
+  - component: {fileID: 114846396647895516}
+  - component: {fileID: 82998755739738044}
+  - component: {fileID: 114625864486614652}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4074929073522852
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1050025798932180}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: -5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &20869256908045782
+Camera:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1050025798932180}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 0
+  m_AllowMSAA: 1
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+  m_StereoMirrorMode: 0
+--- !u!81 &81699892038969742
+AudioListener:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1050025798932180}
+  m_Enabled: 1
+--- !u!82 &82998755739738044
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1050025798932180}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!92 &92972170286329320
+Behaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1050025798932180}
+  m_Enabled: 1
+--- !u!114 &114625864486614652
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1050025798932180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 597fc6b5ebf611b44909376a705d323a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveData: 
+  defaults: 
+--- !u!114 &114846396647895516
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1050025798932180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ba8ca4b20ff95e43bf251efe10b9737, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bronzeKeysText: {fileID: 0}
+  silverKeysText: {fileID: 0}
+  goldKeysText: {fileID: 0}
+  playerXpText: {fileID: 0}
+  playerHpText: {fileID: 0}
+  atkText: {fileID: 0}
+  defText: {fileID: 0}
+  xpBar: {fileID: 0}
+  hpBar: {fileID: 0}
+  battleScreen: {fileID: 0}
+  enemyImage: {fileID: 0}
+  enemyEffect: {fileID: 0}
+  enemyEffectDef: {fileID: 0}
+  playerEffect: {fileID: 0}
+  playerEffectDef: {fileID: 0}
+  hit: {fileID: 21300014, guid: 77ba44a6c17efdd4ca8891d6df7ee98a, type: 3}
+  powerHit: {fileID: 21300016, guid: 77ba44a6c17efdd4ca8891d6df7ee98a, type: 3}
+  heal: {fileID: 21300012, guid: 77ba44a6c17efdd4ca8891d6df7ee98a, type: 3}
+  defend: {fileID: 21300010, guid: 77ba44a6c17efdd4ca8891d6df7ee98a, type: 3}
+  blank: {fileID: 21300096, guid: f8b193db4b5ee5446bf2d33deea67621, type: 3}
+  enemyDamage: {fileID: 0}
+  playerDamage: {fileID: 0}
+  enemy: {fileID: 0}
+  battleMenuSelection: 0
+  skillImages:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  enemyHealthText: {fileID: 0}
+  enemyAtkText: {fileID: 0}
+  enemyDefText: {fileID: 0}
+  playerBattleHealthText: {fileID: 0}
+  playerBattleAtkText: {fileID: 0}
+  playerBattleDefText: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  debugMenu: {fileID: 0}
+  menuOpen: 0
+  deathMenu: {fileID: 0}
+  ui: {fileID: 0}
+  boolBox: {fileID: 0}
+  notifyingText: {fileID: 0}
+  notices: []
+--- !u!124 &124000650411119208
+Behaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1050025798932180}
+  m_Enabled: 1

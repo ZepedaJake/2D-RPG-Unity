@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: d26055c01f289b1428fbc6dd70e753ec
+timeCreated: 1475725103
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 30
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: pixelmix
+  fontNames:
+  - pixelmix
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 2
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

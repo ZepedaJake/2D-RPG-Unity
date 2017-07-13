@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Wall
+  - Enemy
+  - GreenPortal
+  - RedPortal
+  - Portal
+  - Container
+  - Item
+  - Door
+  - Skill Reset
+  - Stat Reset
+  - NPC
+  - Pedestal
+  - DialougeTrigger
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Floor
+  - Wall
+  - Player
+  - Enemy
+  - BoolBox
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: BoolBox
+    uniqueID: 2888909015
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Floor
+    uniqueID: 3966752641
+    locked: 0
