@@ -346,7 +346,7 @@ public class CharacterControllerScript : MonoBehaviour {
         }
         catch { }
         
-        Globals.soundHandler.SetMusic();
+        //Globals.soundHandler.SetMusic();
 
         yield return null;
     }

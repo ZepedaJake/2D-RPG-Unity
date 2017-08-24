@@ -102,11 +102,11 @@ public class MainMenu : MonoBehaviour {
                 
             SceneManager.LoadScene(Globals.serializer.SavedFloor());           
             Globals.currentMap = Globals.serializer.SavedFloor();
-            Globals.soundHandler.SetMusic();
+            //Globals.soundHandler.SetMusic();
             Globals.theLevelMaster.UpdateUI();
             Globals.serializer.LoadPlayerData();
             Globals.theLevelMaster.ui.SetActive(true);
-            SceneManager.UnloadSceneAsync("00-00-00");
+            SceneManager.UnloadSceneAsync("00-00");
 
         }
         else
@@ -155,7 +155,7 @@ public class MainMenu : MonoBehaviour {
         Globals.transition.startTrans = true;
         yield return new WaitForSeconds(1.5f);
 
-        SceneManager.LoadScene("01-01-01");
+        SceneManager.LoadScene("01-01");
         Globals.theLevelMaster.StartDialouge("Newgame", "NewGame");
         //set player at floor spawn
         int spawnX = 0;
@@ -163,11 +163,11 @@ public class MainMenu : MonoBehaviour {
         Globals.playerScript.gameObject.transform.position = new Vector2(spawnX, spawnY);
         Globals.theLevelMaster.ui.SetActive(true);
 
-        Globals.currentMap = "01-01-01";
-        Globals.soundHandler.SetMusic();
+        Globals.currentMap = "01-01";
+        //Globals.soundHandler.SetMusic(0);
         Globals.theLevelMaster.UpdateUI();
         Globals.playerScript.storyProgress = 1;
-        SceneManager.UnloadSceneAsync("00-00-00");
+        //SceneManager.UnloadSceneAsync("00-00");
         
         yield return null;
     }
@@ -185,7 +185,7 @@ public class MainMenu : MonoBehaviour {
         Globals.playerScript.gameObject.transform.position = new Vector2(spawnX, spawnY);
 
         Globals.currentMap = (loadTestMap);
-        Globals.soundHandler.SetMusic();
+        ;
         Globals.theLevelMaster.UpdateUI();
         SceneManager.UnloadSceneAsync("00-00-00");
         yield return null;
@@ -210,7 +210,7 @@ public class MainMenu : MonoBehaviour {
     IEnumerator MusicDelay()
     {
         yield return new WaitForSeconds(.1f);
-        Globals.soundHandler.SetMusic();
+        //Globals.soundHandler.SetMusic();
         yield return null;
     }
 }

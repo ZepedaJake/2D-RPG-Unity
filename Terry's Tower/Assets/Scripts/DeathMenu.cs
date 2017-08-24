@@ -41,10 +41,10 @@ public class DeathMenu : MonoBehaviour {
 
             SceneManager.LoadScene(Globals.serializer.SavedFloor());
             Globals.currentMap = Globals.serializer.SavedFloor();
-            Globals.soundHandler.SetMusic();
+            Globals.soundHandler.SetMusic(10);
             Globals.theLevelMaster.UpdateUI();
             Globals.serializer.LoadPlayerData();
-            SceneManager.UnloadSceneAsync("00-00-00");
+            SceneManager.UnloadSceneAsync("00-00");
 
         }
         else
@@ -57,8 +57,8 @@ public class DeathMenu : MonoBehaviour {
 
     void ToMainMenu()
     {
-        SceneManager.LoadScene("00-00-00");
+        SceneManager.LoadScene("00-00");
         Globals.theLevelMaster.ui.SetActive(false);
-        Globals.soundHandler.SetMusic();
+        //Globals.soundHandler.SetMusic(0);
     }
 }

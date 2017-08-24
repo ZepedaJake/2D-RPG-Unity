@@ -7,15 +7,17 @@ public class Container : MonoBehaviour
     public GameObject[] enemies;
     public GameObject[] items;
     public GameObject[] doors;
+    public int songNumber;
 
     void Start()
     {
-        Debug.Log("Load Enemies");
+        Globals.soundHandler.SetMusic(songNumber);
+        //Debug.Log("Load Enemies");
         Globals.serializer.LoadEnemies();
         Globals.serializer.LoadItems();
         Globals.serializer.LoadDoors();
         Globals.serializer.SavePlayerData();
-        Globals.transition.endTrans = true;
+        Globals.transition.endTrans = true;       
     }
 
     public void CreateEnemy(string e, int x, int y, bool a, string i)

@@ -28,13 +28,13 @@ public class SoundHandler : MonoBehaviour {
 		
 	}
 
-    public void SetMusic()
+    public void SetMusic(int i)
     {
         //float.TryParse(SceneManager.GetActiveScene().name, out Globals.currentFloor);
         // set song for floors
         Debug.Log("Changing Song");
         Debug.Log(Globals.currentMap);
-        int songNumber = int.Parse(Globals.currentMap.Substring(0, 2));
+        int songNumber = i;
 
         try
         {
