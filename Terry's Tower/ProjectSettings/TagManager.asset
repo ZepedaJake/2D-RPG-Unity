@@ -17,6 +17,7 @@ TagManager:
   - NPC
   - Pedestal
   - DialougeTrigger
+  - Fountain
   layers:
   - Default
   - TransparentFX

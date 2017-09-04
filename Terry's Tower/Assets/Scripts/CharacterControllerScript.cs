@@ -159,6 +159,10 @@ public class CharacterControllerScript : MonoBehaviour {
                     canMove = false;
                     Globals.theLevelMaster.boolBox.GetComponent<BoolBox>().objectInQuestion = hit.collider.gameObject;                                 
             }
+            else if(Input.GetKey(KeyCode.Space) && hit.collider.gameObject.tag == "Fountain" && canMove && Globals.theLevelMaster.boolBox.activeSelf == false)
+            {
+                //show fountain menu to fast travel.
+            }
         }
         
         Debug.DrawRay(gameObject.transform.position, looking);
