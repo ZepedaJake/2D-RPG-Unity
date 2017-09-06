@@ -187,7 +187,7 @@ public class MainMenu : MonoBehaviour {
         Globals.currentMap = (loadTestMap);
         ;
         Globals.theLevelMaster.UpdateUI();
-        SceneManager.UnloadSceneAsync("00-00-00");
+        SceneManager.UnloadSceneAsync("00-00");
         yield return null;
     }
 
