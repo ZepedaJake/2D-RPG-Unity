@@ -67,6 +67,9 @@ public class LevelMaster : MonoBehaviour {
     //notifications
     public GameObject notifyingText;
     public List<string> notices = new List<string>();
+
+    //fountain travel menu
+    public GameObject fountainMenu;
     
     //sounds / music
     //public AudioClip[] soundEffects;
