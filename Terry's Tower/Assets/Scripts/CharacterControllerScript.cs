@@ -159,7 +159,7 @@ public class CharacterControllerScript : MonoBehaviour {
                     canMove = false;
                     Globals.theLevelMaster.boolBox.GetComponent<BoolBox>().objectInQuestion = hit.collider.gameObject;                                 
             }
-            else if(Input.GetKey(KeyCode.Space) && hit.collider.gameObject.tag == "Fountain" && canMove)
+            else if(Input.GetKey(KeyCode.Space) && hit.collider.gameObject.tag == "Fountain" && canMove && storyProgress >= 5)
             {
                 //show fountain menu to fast travel.
                
@@ -236,6 +236,9 @@ public class CharacterControllerScript : MonoBehaviour {
                 Globals.theLevelMaster.StartDialouge(c.GetComponent<DialougeTrigger>().dialougeSet, c.GetComponent<DialougeTrigger>().dialougeSet);
                 //might not need this. check later.
                 Destroy(c.gameObject);
+                //ensures that the dialouge triggers wont be hit more than once if they shouldnt be
+                //probably want both == and > later
+                storyProgress++;
             }
             else if( c.GetComponent<DialougeTrigger>().alternateDialougeSet != null)
             {
