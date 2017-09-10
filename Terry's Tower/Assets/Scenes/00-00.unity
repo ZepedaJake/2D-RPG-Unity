@@ -167,6 +167,11 @@ Prefab:
       propertyPath: canMove
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 82718731007487976, guid: e43b34471d90fb245b3a113d96dad841,
+        type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e43b34471d90fb245b3a113d96dad841, type: 2}
   m_IsPrefabParent: 0
@@ -10715,7 +10720,7 @@ Prefab:
     - target: {fileID: 114684267944547112, guid: 0d7c81f98b1027b43ad33bb0d3421f98,
         type: 2}
       propertyPath: loadTestMap
-      value: 02-02
+      value: 02-03
       objectReference: {fileID: 0}
     - target: {fileID: 114019163427291174, guid: 0d7c81f98b1027b43ad33bb0d3421f98,
         type: 2}
