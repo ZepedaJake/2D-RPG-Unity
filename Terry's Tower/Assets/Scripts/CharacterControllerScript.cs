@@ -307,6 +307,10 @@ public class CharacterControllerScript : MonoBehaviour {
             StartCoroutine(ChangeMap(c.gameObject));
             
         }
+        else if(c.tag == "Button")
+        {
+            c.GetComponentInParent<BinaryObject>().SendMessage("Toggle");
+        }
         else
         {
            

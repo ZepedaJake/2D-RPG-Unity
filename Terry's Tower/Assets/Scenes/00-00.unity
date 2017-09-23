@@ -172,6 +172,32 @@ Prefab:
       propertyPath: spreadCustomCurve.m_RotationOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 50213268106137248, guid: e43b34471d90fb245b3a113d96dad841,
+        type: 2}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653092170777940, guid: e43b34471d90fb245b3a113d96dad841, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1986680241199102, guid: e43b34471d90fb245b3a113d96dad841, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661508563158280, guid: e43b34471d90fb245b3a113d96dad841, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1751987734349270, guid: e43b34471d90fb245b3a113d96dad841, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 68975592289550602, guid: e43b34471d90fb245b3a113d96dad841,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e43b34471d90fb245b3a113d96dad841, type: 2}
   m_IsPrefabParent: 0
@@ -7455,6 +7481,36 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1153618650}
+--- !u!1 &1157341923 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1986680241199102, guid: e43b34471d90fb245b3a113d96dad841,
+    type: 2}
+  m_PrefabInternal: {fileID: 37552166}
+--- !u!61 &1157341926
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1157341923}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.35}
+  m_EdgeRadius: 0
 --- !u!1 &1157658178
 GameObject:
   m_ObjectHideFlags: 0
@@ -10720,7 +10776,7 @@ Prefab:
     - target: {fileID: 114684267944547112, guid: 0d7c81f98b1027b43ad33bb0d3421f98,
         type: 2}
       propertyPath: loadTestMap
-      value: 02-03
+      value: 03-03
       objectReference: {fileID: 0}
     - target: {fileID: 114019163427291174, guid: 0d7c81f98b1027b43ad33bb0d3421f98,
         type: 2}

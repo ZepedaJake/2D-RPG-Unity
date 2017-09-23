@@ -119,7 +119,9 @@ public class LevelMaster : MonoBehaviour {
         } 
         if (Input.GetKeyDown(KeyCode.P))
         {
-           
+            //instantiate babyslime at 0,0
+            GameObject testLoadEnemy = Resources.Load<GameObject>("Sprites/Enemies/BabySlime");
+            Instantiate(testLoadEnemy, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
         }              
     }
        

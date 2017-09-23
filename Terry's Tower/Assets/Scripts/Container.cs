@@ -26,9 +26,14 @@ public class Container : MonoBehaviour
 
         //if (hitColliders.Length == 0)
         //{
+        
             Enemy enemy = (Enemy)System.Enum.Parse(typeof(Enemy), e);
-            Debug.Log((int)enemy);
-            GameObject newEnemy = Instantiate(enemies[(int)enemy], new Vector3(x, y, 0), new Quaternion(0, 0, 0, 0));
+        //Debug.Log(enemy.ToString());
+            GameObject newEnemy = Instantiate(Resources.Load<GameObject>("Sprites/Enemies/" + enemy.ToString()), new Vector3(x, y, 0), new Quaternion(0, 0, 0, 0));
+            
+               // newEnemy = Instantiate(enemies[(int)enemy], new Vector3(x, y, 0), new Quaternion(0, 0, 0, 0));
+            
+            
             //if(i != null)
             //{
             //    newEnemy.GetComponent<EnemyBase>().heldItem = i;
@@ -47,27 +52,19 @@ public class Container : MonoBehaviour
 
     public void CreateItem(string i, int v, int x, int y, bool a)
     {
-        //Collider2D[] hitColliders = Physics2D.OverlapCircleAll(new Vector2(x + .5f, y - .5f), .7f, 1 << LayerMask.NameToLayer("Item"));
+        Item item = (Item)System.Enum.Parse(typeof(Item), i);
+        GameObject newItem = Instantiate(Resources.Load<GameObject>("Sprites/Items/" + item.ToString()), new Vector3(x, y, 0), new Quaternion(0, 0, 0, 0));
+        //GameObject newItem = Instantiate(items[(int)item], new Vector3(x, y, 0), new Quaternion(0, 0, 0, 0));
 
-        //if (hitColliders.Length == 0)
-        //{
-            Item item = (Item)System.Enum.Parse(typeof(Item), i);
-            Debug.Log((int)item);
-            GameObject newItem = Instantiate(items[(int)item], new Vector3(x, y, 0), new Quaternion(0, 0, 0, 0));
-            newItem.GetComponent<ItemBase>().active = a;
-
-            newItem.GetComponentInChildren<SpriteRenderer>().enabled = a;
-        //    Debug.Log(a);
-        //}
-        //foreach (Collider2D c in hitColliders)
-        //{
-        //    Debug.Log(c);
-        //}
+        newItem.GetComponent<ItemBase>().active = a;
+        newItem.GetComponentInChildren<SpriteRenderer>().enabled = a;
     }
 
     public void CreateDoor(string i, int x, int y)
     {                    
-                DoorType item = (DoorType)System.Enum.Parse(typeof(DoorType), i);
-                GameObject newItem = Instantiate(doors[(int)item], new Vector3(x, y, 0), new Quaternion(0, 0, 0, 0));                                           
+        DoorType item = (DoorType)System.Enum.Parse(typeof(DoorType), i);
+        //GameObject newItem = Instantiate(Resources.Load<GameObject>("Sprites/Doors/" + item.ToString()), new Vector3(x, y, 0), new Quaternion(0, 0, 0, 0));
+
+        GameObject newItem = Instantiate(doors[(int)item], new Vector3(x, y, 0), new Quaternion(0, 0, 0, 0));                                           
     }
 }

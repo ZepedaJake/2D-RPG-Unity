@@ -18,6 +18,7 @@ TagManager:
   - Pedestal
   - DialougeTrigger
   - Fountain
+  - Button
   layers:
   - Default
   - TransparentFX

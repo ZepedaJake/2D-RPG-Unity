@@ -62,3 +62,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/02-03.unity
     guid: 3513981997ee2714eaf0d39c05f1e9df
+  - enabled: 1
+    path: Assets/Scenes/03-01.unity
+    guid: ffcbd1a37aff0d04eadc30fe90361a51
+  - enabled: 1
+    path: Assets/Scenes/03-02.unity
+    guid: cd87aca5e8e5e4444a472b42448c641d
+  - enabled: 1
+    path: Assets/Scenes/03-03.unity
+    guid: 00000000000000000000000000000000
