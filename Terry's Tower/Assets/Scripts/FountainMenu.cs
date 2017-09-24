@@ -108,9 +108,7 @@ public class FountainMenu : MonoBehaviour {
     IEnumerator Teleport(string m, int x, int y)
     {
         Globals.serializer.SavePlayerData();
-        Globals.serializer.SaveEnemies();
-        Globals.serializer.SaveItems();
-        Globals.serializer.SaveDoors();
+        Globals.serializer.SaveMapData(false);
         Globals.transition.startTrans = true;
         yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene(m);

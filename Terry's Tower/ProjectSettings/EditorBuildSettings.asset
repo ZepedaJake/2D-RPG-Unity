@@ -54,6 +54,9 @@ EditorBuildSettings:
     path: Assets/Scenes/01-14.unity
     guid: a1e0d4d11f75f2d4383043836ad60a4c
   - enabled: 1
+    path: Assets/Scenes/01-15.unity
+    guid: 00000000000000000000000000000000
+  - enabled: 1
     path: Assets/Scenes/02-01.unity
     guid: fa60bd7fca9a75640b0d1814ccf8e267
   - enabled: 1
@@ -70,4 +73,4 @@ EditorBuildSettings:
     guid: cd87aca5e8e5e4444a472b42448c641d
   - enabled: 1
     path: Assets/Scenes/03-03.unity
-    guid: 00000000000000000000000000000000
+    guid: 368f7d87c8388f646bab20ed2d54cb29

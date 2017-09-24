@@ -113,10 +113,17 @@ public class LevelMaster : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.F4))
         {
-            Globals.serializer.SaveEnemiesDefault();
-            Globals.serializer.SaveItemsDefault();
-            Globals.serializer.SaveDoorsDefault();
-        } 
+            //Globals.serializer.SaveEnemiesDefault();
+            //Globals.serializer.SaveItemsDefault();
+            //Globals.serializer.SaveDoorsDefault();
+            Globals.serializer.SaveMapData(true);
+            
+        }
+        if (Input.GetKeyDown(KeyCode.F5))
+        {
+            StartCoroutine(Globals.serializer.LoadMapData());
+
+        }
         if (Input.GetKeyDown(KeyCode.P))
         {
             //instantiate babyslime at 0,0

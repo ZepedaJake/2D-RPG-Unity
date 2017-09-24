@@ -103,9 +103,10 @@ public class MainMenu : MonoBehaviour {
             SceneManager.LoadScene(Globals.serializer.SavedFloor());           
             Globals.currentMap = Globals.serializer.SavedFloor();
             //Globals.soundHandler.SetMusic();
-            Globals.theLevelMaster.UpdateUI();
+           // Globals.theLevelMaster.UpdateUI();
             Globals.serializer.LoadPlayerData();
             Globals.theLevelMaster.ui.SetActive(true);
+            Globals.theLevelMaster.UpdateUI();
             SceneManager.UnloadSceneAsync("00-00");
 
         }
@@ -142,7 +143,7 @@ public class MainMenu : MonoBehaviour {
             {
                 f.Delete();
             }
-            //File.Delete(Path.Combine(Globals.serializer.saveData, "player.json"));
+            File.Delete(Path.Combine(Globals.serializer.saveData, "player.json"));
             StartCoroutine(NewGame());
         }
         else
@@ -183,7 +184,7 @@ public class MainMenu : MonoBehaviour {
         int spawnX = 0;
         int spawnY = 0;
         Globals.playerScript.gameObject.transform.position = new Vector2(spawnX, spawnY);
-
+        Globals.theLevelMaster.ui.SetActive(true);
         Globals.currentMap = (loadTestMap);
         ;
         Globals.theLevelMaster.UpdateUI();

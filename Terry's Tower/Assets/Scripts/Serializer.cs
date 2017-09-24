@@ -98,8 +98,8 @@ public class Serializer : MonoBehaviour {
 
         SavePlayerInventory();
 
-        Debug.Log(json);
-        Debug.Log(fileName);
+        //Debug.Log(json);
+        //Debug.Log(fileName);
     }
 
     public void SavePlayerInventory()
@@ -133,15 +133,28 @@ public class Serializer : MonoBehaviour {
 
     public void LoadPlayerInventory()
     {
-        fileName = Path.Combine(saveData, "inventory.json");
-        loadFile = File.ReadAllText(fileName);
-
-        PlayerInventory load = JsonUtility.FromJson<PlayerInventory>(loadFile);
-        player.inventory.Clear();
-        foreach(InventoryItemBase i in load.inventoryItems)
+        try
         {
-            player.inventory.Add(i);
+            fileName = Path.Combine(saveData, "inventory.json");
+            loadFile = File.ReadAllText(fileName);
+
+            PlayerInventory load = JsonUtility.FromJson<PlayerInventory>(loadFile);
+            if (load.inventoryItems.Count > 0)
+            {
+                player.inventory.Clear();
+                foreach (InventoryItemBase i in load.inventoryItems)
+                {
+                    player.inventory.Add(i);
+                }
+            }
         }
+        catch
+        {
+            Debug.Log("Problem loading inventory");
+        }
+        
+        
+        
     }
 
     public void LoadPlayerData()
@@ -189,7 +202,7 @@ public class Serializer : MonoBehaviour {
 
     public string SavedFloor()
     {
-        
+        //used to load in saved floor
         fileName = Path.Combine(saveData, "player.json");
         loadFile = File.ReadAllText(fileName);
 
@@ -225,7 +238,7 @@ public class Serializer : MonoBehaviour {
     //    player.gameObject.transform.position = new Vector2(load.returnPointX + .5f, load.returnPointY-.5f);
     //}
 
-    public void SaveEnemies()
+    /*public void SaveEnemies()
     {
         try
         {
@@ -388,7 +401,7 @@ public class Serializer : MonoBehaviour {
                     newInfo.value = currentItem.value;
                     newInfo.posX = (int)currentItem.transform.position.x;
                     newInfo.posY = (int)currentItem.transform.position.y;
-                    newInfo.active = currentItem.active;
+                    //newInfo.active = currentItem.active;
                 }
                 mapItems.mapItemInfo.Add(newInfo);
             }
@@ -430,7 +443,7 @@ public class Serializer : MonoBehaviour {
                     newInfo.value = currentItem.value;
                     newInfo.posX = (int)currentItem.transform.position.x;
                     newInfo.posY = (int)currentItem.transform.position.y;
-                    newInfo.active = currentItem.active;
+                    //newInfo.active = currentItem.active;
                 }
                 mapItems.mapItemInfo.Add(newInfo);
                 Destroy(item);
@@ -493,7 +506,7 @@ public class Serializer : MonoBehaviour {
         for (int x = load.mapItemInfo.Count - 1; x > -1; x--)
         {
             ItemsOnMap.ItemInfo i = load.mapItemInfo[x];
-            itemContainer.CreateItem(i.itemName,i.value, i.posX, i.posY,i.active);
+            itemContainer.CreateItem(i.itemName,i.value, i.posX, i.posY);
             load.mapItemInfo.RemoveAt(x);
         }
 
@@ -515,6 +528,7 @@ public class Serializer : MonoBehaviour {
                 DoorsOnMap.DoorInfo newInfo = new DoorsOnMap.DoorInfo();
                 {
                     newInfo.doorType = currentItem.doorType.ToString();
+                    newInfo.doorName = currentItem.doorName;
                     newInfo.posX = (int)currentItem.transform.position.x;
                     newInfo.posY = (int)currentItem.transform.position.y;
                 }
@@ -553,6 +567,7 @@ public class Serializer : MonoBehaviour {
                 DoorsOnMap.DoorInfo newInfo = new DoorsOnMap.DoorInfo();
                 {
                     newInfo.doorType = currentItem.doorType.ToString();
+                    newInfo.doorName = currentItem.doorName;
                     newInfo.posX = (int)currentItem.transform.position.x;
                     newInfo.posY = (int)currentItem.transform.position.y;
                 }
@@ -608,12 +623,202 @@ public class Serializer : MonoBehaviour {
             //{
             //    itemContainer.CreateDoor(info.doorType, info.posX, info.posY);
             //}
-            for (int x = load.mapDoorInfo.Count - 1; x > -1; x--)
+            try
             {
-                DoorsOnMap.DoorInfo d = load.mapDoorInfo[x];
-                itemContainer.CreateDoor(d.doorType,d.posX,d.posY);
-                load.mapDoorInfo.RemoveAt(x);
+                for (int x = load.mapDoorInfo.Count - 1; x > -1; x--)
+                {
+                    DoorsOnMap.DoorInfo d = load.mapDoorInfo[x];
+                    itemContainer.CreateDoor(d.doorType, d.doorName, d.posX, d.posY);
+                    load.mapDoorInfo.RemoveAt(x);
+                }
             }
+            catch
+            {
+                for (int x = load.mapDoorInfo.Count - 1; x > -1; x--)
+                {
+                    DoorsOnMap.DoorInfo d = load.mapDoorInfo[x];
+                    itemContainer.CreateDoor(d.doorType, d.posX, d.posY);
+                    load.mapDoorInfo.RemoveAt(x);
+                }
+            }
+            
+
+        }
+        catch { }
+        yield return null;       
+    }*/
+
+    public void SaveMapData(bool d)
+    {
+        //true = default; false = other
+        fileName = "";
+        MapData mapData = new MapData
+        {
+            mapDoorInfo = new List<MapData.Door>(),
+            mapEnemyInfo = new List<MapData.Enemy>(),
+            mapItemInfo = new List<MapData.Item>()
+            
+        };
+
+        //Save Doors
+        try
+        {
+            foreach (GameObject door in GameObject.FindGameObjectsWithTag("Door"))
+            {
+                DoorBase currentItem = door.GetComponent<DoorBase>();
+
+                MapData.Door newInfo = new MapData.Door();
+                {
+                    //newInfo.doorType = currentItem.doorType.ToString();
+                    newInfo.doorName = currentItem.doorName;
+                    newInfo.posX = (int)currentItem.transform.position.x;
+                    newInfo.posY = (int)currentItem.transform.position.y;
+                }
+
+                mapData.mapDoorInfo.Add(newInfo);
+                Destroy(door);
+            }
+        }
+        catch
+        {
+            Debug.Log("problem saving doors");
+        }
+        //Save Items
+         try
+            {             
+                foreach (GameObject item in GameObject.FindGameObjectsWithTag("Item"))
+                {
+                    ItemBase currentItem = item.GetComponent<ItemBase>();
+
+                    MapData.Item newInfo = new MapData.Item();
+                    {
+                        newInfo.itemName = currentItem.itemName.ToString();
+                        newInfo.value = currentItem.value;
+                        newInfo.posX = (int)currentItem.transform.position.x;
+                        newInfo.posY = (int)currentItem.transform.position.y;
+                        //newInfo.active = currentItem.active;
+                    }
+                    mapData.mapItemInfo.Add(newInfo);
+                    Destroy(item);
+                }
+            }
+        catch
+        {
+            Debug.Log("problem saving items");
+        }
+
+        //Save Enemies
+        try
+        {
+            foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+            {
+                EnemyBase currentEnemy = enemy.GetComponent<EnemyBase>();
+
+                MapData.Enemy newInfo = new MapData.Enemy();
+                {
+                    newInfo.enemyName = currentEnemy.enemyName.ToString();
+                    newInfo.posX = (int)currentEnemy.transform.position.x;
+                    newInfo.posY = (int)currentEnemy.transform.position.y;
+                    newInfo.alive = currentEnemy.alive;
+                    newInfo.heldItem = currentEnemy.heldItem;
+                }
+                mapData.mapEnemyInfo.Add(newInfo);
+                Destroy(enemy);
+            }
+        }
+        catch
+        {
+            Debug.Log("problem saving enemies");
+        }
+
+        string json = JsonUtility.ToJson(mapData);
+      
+        if(d == true)
+        {
+            fileName = Path.Combine(defaults, Globals.currentMap + ".json");
+            Debug.Log(d);
+        }
+        else
+        {
+            Debug.Log(d);
+        }
+            
+        
+            
+        
+        if (File.Exists(fileName))
+        {
+        File.Delete(fileName);
+        }
+
+        File.WriteAllText(fileName, json);
+           
+        Debug.Log("save complete" + fileName);
+    }
+
+    public IEnumerator LoadMapData()
+    {
+        yield return new WaitForSeconds(.5f);
+        Debug.Log("loading map data");
+        try
+        {
+            if (File.Exists(Path.Combine(saveData, Globals.currentMap + ".json")))
+            {
+                fileName = Path.Combine(saveData, Globals.currentMap + ".json");
+            }
+            else
+            {
+                fileName = Path.Combine(defaults, Globals.currentMap + ".json");
+            }
+
+            Debug.Log("loading from " + fileName);
+            loadFile = File.ReadAllText(fileName);
+
+            MapData load = JsonUtility.FromJson<MapData>(loadFile);
+            Container itemContainer = GameObject.FindWithTag("Container").GetComponent<Container>();
+
+            try
+            {
+                for (int x = load.mapDoorInfo.Count - 1; x > -1; x--)
+                {
+                    MapData.Door d = load.mapDoorInfo[x];
+                    itemContainer.CreateDoor(d.doorName, d.posX, d.posY);
+                    load.mapDoorInfo.RemoveAt(x);
+                }
+            }
+            catch
+            {
+                Debug.Log("problem loading doors");
+            }
+
+            try
+            {
+                for (int x = load.mapItemInfo.Count - 1; x > -1; x--)
+                {
+                    MapData.Item i = load.mapItemInfo[x];
+                    itemContainer.CreateItem(i.itemName, i.value, i.posX, i.posY);
+                    load.mapItemInfo.RemoveAt(x);
+                }
+            }
+            catch
+            {
+
+            }
+
+            try
+            {
+                for (int x = load.mapEnemyInfo.Count - 1; x > -1; x--)
+                {
+                    MapData.Enemy e = load.mapEnemyInfo[x];
+                    itemContainer.CreateEnemy(e.enemyName, e.posX, e.posY,e.alive,e.heldItem);
+                    load.mapEnemyInfo.RemoveAt(x);
+                }
+            }
+            catch
+            {
+
+            }
+
 
         }
         catch { }

@@ -5,17 +5,17 @@ using UnityEngine;
 public class DoorBase : MonoBehaviour {
     
     public DoorType doorType;
-
+    public string doorName;
 }
 
 public enum DoorType
 {
     BronzeDoor,
-    BronzeDoorSide,
+    //BronzeDoorSide,
     GoldDoor,
-    GoldDoorSide,
-    SecretDoor,
-    SecretDoorSide,
+    //GoldDoorSide,
+    //SecretDoor,
+    //SecretDoorSide,
     SilverDoor,
-    SilverDoorSide
+    //SilverDoorSide
 }

@@ -788,6 +788,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114550809833332088, guid: a8c2691d25d87f642814fc0a32d78446,
+        type: 2}
+      propertyPath: songNumber
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a8c2691d25d87f642814fc0a32d78446, type: 2}
   m_IsPrefabParent: 0
@@ -4576,8 +4581,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 1
-  active: 1
   itemName: 0
+  itemType: 0
 --- !u!4 &1314169796 stripped
 Transform:
   m_PrefabParentObject: {fileID: 449822, guid: 235c9c0deda34a142b8998e35db3ba8e, type: 2}
@@ -6615,8 +6620,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 1
-  active: 1
   itemName: 0
+  itemType: 0
 --- !u!4 &1974453826 stripped
 Transform:
   m_PrefabParentObject: {fileID: 449822, guid: 235c9c0deda34a142b8998e35db3ba8e, type: 2}

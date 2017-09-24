@@ -93,7 +93,7 @@ MonoBehaviour:
   healCooldown: 3
   currentHealCooldown: 0
   healPerc: 0.1
-  enemyName: 0
+  enemyName: BabySlime
   alive: 1
   heldItem: 
 --- !u!212 &212669737925872516

@@ -95,7 +95,7 @@ MonoBehaviour:
   healCooldown: 5
   currentHealCooldown: 0
   healPerc: 0.2
-  enemyName: 11
+  enemyName: Boss1
   alive: 1
   heldItem: Red Orb
 --- !u!114 &114945401931002124

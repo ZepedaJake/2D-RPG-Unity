@@ -97,14 +97,14 @@ public class CharacterControllerScript : MonoBehaviour {
                             Globals.soundEffectSource.PlayOneShot(Globals.soundHandler.soundEffect[3]);
                         }
                         break;
-                    case DoorType.BronzeDoorSide:
+                    /*case DoorType.BronzeDoorSide:
                         if (bronzeKeys > 0)
                         {
                             bronzeKeys--;
                             Destroy(hit.collider.gameObject);
                             Globals.soundEffectSource.PlayOneShot(Globals.soundHandler.soundEffect[3]);
                         }
-                        break;
+                        break;*/
                     case DoorType.GoldDoor:
                         if (goldKeys > 0)
                         {
@@ -113,14 +113,14 @@ public class CharacterControllerScript : MonoBehaviour {
                             Globals.soundEffectSource.PlayOneShot(Globals.soundHandler.soundEffect[3]);
                         }
                         break;
-                    case DoorType.GoldDoorSide:
+                    /*case DoorType.GoldDoorSide:
                         if (goldKeys > 0)
                         {
                             goldKeys--;
                             Destroy(hit.collider.gameObject);
                             Globals.soundEffectSource.PlayOneShot(Globals.soundHandler.soundEffect[3]);
                         }
-                        break;
+                        break;*/
                     case DoorType.SilverDoor:
                         if (silverKeys > 0)
                         {
@@ -129,14 +129,14 @@ public class CharacterControllerScript : MonoBehaviour {
                             Globals.soundEffectSource.PlayOneShot(Globals.soundHandler.soundEffect[3]);
                         }
                         break;
-                    case DoorType.SilverDoorSide:
+                   /* case DoorType.SilverDoorSide:
                         if (silverKeys > 0)
                         {
                             silverKeys--;
                             Destroy(hit.collider.gameObject);
                             Globals.soundEffectSource.PlayOneShot(Globals.soundHandler.soundEffect[3]);
                         }
-                        break;
+                        break;*/
                     default:
                         break;
                 }
@@ -255,7 +255,7 @@ public class CharacterControllerScript : MonoBehaviour {
         //}
         else if(c.tag == "Item")
         {
-            switch(c.gameObject.GetComponent<ItemBase>().itemName)
+            switch(c.gameObject.GetComponent<ItemBase>().itemType)
             {
                 case Item.BronzeKey:
                     bronzeKeys++;
@@ -266,30 +266,19 @@ public class CharacterControllerScript : MonoBehaviour {
                 case Item.GoldKey:
                     goldKeys++;
                     break;
-                case Item.BronzeSword:
+                case Item.Sword:
                     atkItemBonus += c.GetComponent<ItemBase>().value;                    
                     break;
-                case Item.SilverSword:
-                    atkItemBonus += c.GetComponent<ItemBase>().value;
-                    break;
-                case Item.GoldSword:
-                    atkItemBonus += c.GetComponent<ItemBase>().value;
-                    break;
-                case Item.BronzeShield:
-                    defItemBonus += c.GetComponent<ItemBase>().value;
-                    break;
-                case Item.SilverShield:
-                    defItemBonus += c.GetComponent<ItemBase>().value;
-                    break;
-                case Item.GoldShield:
+                case Item.Shield:
                     defItemBonus += c.GetComponent<ItemBase>().value;
                     break;
                 default:
                     break;
                     
             }
-            c.GetComponent<ItemBase>().active = false;
-            c.gameObject.SetActive(false);
+            //c.GetComponent<ItemBase>().active = false;
+            //c.gameObject.SetActive(false);
+            Destroy(c.gameObject);
             UpdateStats();
             Globals.soundEffectSource.PlayOneShot(Globals.soundHandler.soundEffect[0]);
             Globals.theLevelMaster.UpdateUI();
@@ -324,9 +313,10 @@ public class CharacterControllerScript : MonoBehaviour {
 
         //Globals.serializer.SaveMap(c.GetComponent<Portal>().returnPointX, c.GetComponent<Portal>().returnPointY);
         Globals.serializer.SavePlayerData();
-        Globals.serializer.SaveEnemies();
-        Globals.serializer.SaveItems();
-        Globals.serializer.SaveDoors();
+        //Globals.serializer.SaveEnemies();
+        //Globals.serializer.SaveItems();
+        //Globals.serializer.SaveDoors();
+        Globals.serializer.SaveMapData(false);
         string nextScene = c.GetComponent<Portal>().goToScene;
 
         Globals.transition.startTrans = true;
@@ -340,29 +330,13 @@ public class CharacterControllerScript : MonoBehaviour {
         catch
         {
             
-            Debug.Log("No Save For " + nextScene);
-            //Debug.Log(nextScene.Substring(9, 2));
-
-
-            //int spawnX = int.Parse(nextScene.Substring(9, 2));
-            //int spawnY = int.Parse(nextScene.Substring(12, 2));
-            //gameObject.transform.position = new Vector2(spawnX + .5f, spawnY - .5f);
+            Debug.Log(nextScene + " position missing");
             gameObject.transform.position = new Vector2(0,0);
         }
 
         SceneManager.LoadScene(nextScene);
         //SceneManager.UnloadSceneAsync(Globals.currentMap);
         Globals.currentMap = nextScene;
-        try
-        {          
-            //Globals.serializer.LoadEnemies();
-            //Globals.serializer.LoadItems();
-            //Globals.serializer.LoadDoors();
-        }
-        catch { }
-        
-        //Globals.soundHandler.SetMusic();
-
         yield return null;
     }
 
@@ -388,18 +362,4 @@ public class CharacterControllerScript : MonoBehaviour {
         atk = statAtk + atkItemBonus + 3;
         def = statDef + defItemBonus;
     }
-
-    //public void SetMusic()
-    //{
-    //    //float.TryParse(SceneManager.GetActiveScene().name, out Globals.currentFloor);
-    //    // set song for floors
-    //    int songNumber = int.Parse(Globals.currentMap.Substring(0,2));
-
-    //    if (GetComponent<AudioSource>().clip != theLevelMaster.music[songNumber])
-    //    {
-    //        GetComponent<AudioSource>().Stop();
-    //        GetComponent<AudioSource>().clip = theLevelMaster.music[songNumber];
-    //        GetComponent<AudioSource>().Play();
-    //    }
-    //}
 }

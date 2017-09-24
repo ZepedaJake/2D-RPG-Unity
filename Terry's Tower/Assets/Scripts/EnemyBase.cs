@@ -22,14 +22,15 @@ public class EnemyBase : MonoBehaviour {
     public int currentHealCooldown;
     public double healPerc;
 
-    public Enemy enemyName;
+    //public Enemy enemyName;
+    public string enemyName;
     public bool alive = true;
     public string heldItem;
 
     
 
 }
-public enum Enemy
+/*public enum Enemy
 {
     BabySlime,
     Bat,
@@ -43,4 +44,4 @@ public enum Enemy
     CorruptedFemale,
     Statue,
     Boss1
-}
+}*/

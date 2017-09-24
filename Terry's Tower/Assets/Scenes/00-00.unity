@@ -3450,14 +3450,11 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 494342365}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0e1557b9d1af2a4599cb843018271ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies: []
-  items: []
-  doors: []
   songNumber: 0
 --- !u!1 &506679894
 GameObject:
@@ -7204,6 +7201,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4439283180580370, guid: a8c2691d25d87f642814fc0a32d78446, type: 2}
       propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114550809833332088, guid: a8c2691d25d87f642814fc0a32d78446,
+        type: 2}
+      propertyPath: songNumber
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114550809833332088, guid: a8c2691d25d87f642814fc0a32d78446,
+        type: 2}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

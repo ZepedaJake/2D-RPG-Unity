@@ -93,7 +93,7 @@ MonoBehaviour:
   healCooldown: 3
   currentHealCooldown: 0
   healPerc: 0.15
-  enemyName: 2
+  enemyName: Slime
   alive: 1
   heldItem: 
 --- !u!212 &212342428143306234

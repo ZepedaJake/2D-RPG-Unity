@@ -78,7 +78,7 @@ public struct ItemsOnMap
         public int value;
         public int posX;
         public int posY;
-        public bool active;
+        //public bool active;
     }
 
     public List<ItemInfo> mapItemInfo;
@@ -92,6 +92,7 @@ public struct DoorsOnMap
     public struct DoorInfo
     {
         public string doorType;
+        public string doorName;
         public int posX;
         public int posY;
     }
@@ -103,5 +104,45 @@ public struct DoorsOnMap
 public class PlayerInventory
 {
     public List<InventoryItemBase> inventoryItems;
+}
+
+[Serializable]
+public struct MapData
+{
+    [Serializable]
+    public struct Enemy
+    {
+        public string enemyName;
+        public int posX;
+        public int posY;
+        public bool alive;
+        public string heldItem;
+
+    }
+    //----------
+    public List<Enemy> mapEnemyInfo;
+
+    [Serializable]
+    public struct Item
+    {
+        public string itemName;
+        public int value;
+        public int posX;
+        public int posY;
+    }
+
+    public List<Item> mapItemInfo;
+
+    //----------
+    [Serializable]
+    public struct Door
+    {
+        //public string doorType;
+        public string doorName;
+        public int posX;
+        public int posY;
+    }
+
+    public List<Door> mapDoorInfo;
 }
 

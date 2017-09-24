@@ -93,7 +93,7 @@ MonoBehaviour:
   healCooldown: 3
   currentHealCooldown: 0
   healPerc: 0.15
-  enemyName: 7
+  enemyName: Female
   alive: 1
   heldItem: 
 --- !u!212 &212472725504790826
