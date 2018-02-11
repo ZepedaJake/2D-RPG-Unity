@@ -15,10 +15,11 @@ public class CharacterControllerScript : MonoBehaviour {
     
     public SkillBase[] skills;
     public List<InventoryItemBase> inventory = new List<InventoryItemBase>();
+    public List<Quest> quests = new List<Quest>();
 
     public int level = 1;
-    public int statPoints = 10;
-    public int skillPoints = 10;
+    public int statPoints = 5;
+    public int skillPoints = 1;
     public int spentStatPoints = 0;
     public int spentSkillPoints = 0;
 
@@ -40,12 +41,11 @@ public class CharacterControllerScript : MonoBehaviour {
     public int silverKeys = 0;
     public int goldKeys = 0;
 
-    public int redOrbState = 0; //0 = not placed, 1 = 1st pedestal, 2 = end pedestal
-    public bool redOrbActivated = false;
+    public int redOrbState = 0; //0 = not placed, 1 = 1st pedestal, 2 = end pedestal  
     public int blueOrbState = 0;
-    public bool blueOrbActivated = false;
+   
 
-    public int storyProgress;
+    public float storyProgress;
 
 
 
@@ -166,9 +166,16 @@ public class CharacterControllerScript : MonoBehaviour {
                 Globals.theLevelMaster.fountainMenu.SetActive(true);
                 canMove = false;
             }
+            else if (Input.GetKeyDown(KeyCode.Space) && hit.collider.gameObject.tag == "NPC" && canMove && hit.collider.gameObject.GetComponent<NPC>().talking == false)
+            {
+                hit.collider.gameObject.GetComponent<NPC>().CheckProgress();
+                StartCoroutine(Globals.theLevelMaster.NPCDialouge(hit.collider.gameObject));
+                canMove = false;
+                Debug.Log("talk to npc");
+            }            
         }
         //Debug.Log(hit.collider.gameObject.tag);
-        Debug.DrawRay(gameObject.transform.position, looking);
+        //Debug.DrawRay(gameObject.transform.position, looking);
         
 
     }
@@ -238,7 +245,7 @@ public class CharacterControllerScript : MonoBehaviour {
                 Destroy(c.gameObject);
                 //ensures that the dialouge triggers wont be hit more than once if they shouldnt be
                 //probably want both == and > later
-                storyProgress++;
+                storyProgress = c.GetComponent<DialougeTrigger>().setStoryTo;
             }
             else if( c.GetComponent<DialougeTrigger>().alternateDialougeSet != null)
             {
@@ -345,7 +352,7 @@ public class CharacterControllerScript : MonoBehaviour {
         skills[0].calculatedStrength = (int)(skills[0].baseStrength + atk);
         skills[1].calculatedStrength = (int)(skills[1].baseStrength * atk);
         skills[2].calculatedStrength = (int)(skills[2].baseStrength * def);      
-        skills[3].calculatedStrength = (int)(skills[3].baseStrength * def);
+        skills[3].calculatedStrength = (int)(skills[3].baseStrength * (int)(def/2));
          
         for(int x = 0; x<5;x++)
         {
@@ -359,7 +366,10 @@ public class CharacterControllerScript : MonoBehaviour {
 
     public void UpdateStats()
     {
-        atk = statAtk + atkItemBonus + 3;
+        atk = statAtk + atkItemBonus;
         def = statDef + defItemBonus;
+        maxHealth = ((level - 1) * 25) + 100;
+        
     }
+
 }

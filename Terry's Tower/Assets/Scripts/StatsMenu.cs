@@ -28,6 +28,11 @@ public class StatsMenu : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        UpdateStats();
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.W))

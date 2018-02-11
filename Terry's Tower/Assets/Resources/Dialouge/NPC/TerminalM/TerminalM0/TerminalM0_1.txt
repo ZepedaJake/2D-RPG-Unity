@@ -1,0 +1,3 @@
+Prototype Notes: 
+Shield: Hard collisions to base capable of discharging electricity.
+Sword: Capable of stunning targets in addition to cutting.

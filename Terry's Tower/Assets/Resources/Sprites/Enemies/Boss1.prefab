@@ -80,21 +80,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c15af6fc068b5a849a3fd5cec9f3091a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10000
-  currentHealth: 10000
-  atk: 1200
-  def: 1200
-  xp: 1000
-  powerAtkChance: 20
-  powerAtkCooldown: 3
+  health: 7000
+  currentHealth: 7000
+  atk: 325
+  def: 315
+  xp: 3000
+  powerAtkChance: 15
+  powerAtkCooldown: 5
   currentPowerAtkCooldown: 0
-  powerAtkMult: 2
-  defChance: 20
+  powerAtkMult: 1.5
+  defChance: 25
   defMult: 2
-  healChance: 30
+  healChance: 25
   healCooldown: 5
   currentHealCooldown: 0
-  healPerc: 0.2
+  healPerc: 0.3
   enemyName: Boss1
   alive: 1
   heldItem: Red Orb
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e70eac45f3dd225419e5edc7d87fc791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  setStoryProgress: 2
+  setStoryProgress: 1.2
 --- !u!114 &114988335817125462
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -99,9 +99,10 @@ public class LevelMaster : MonoBehaviour {
         
         time += Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.Escape) && Globals.paused == false)
+        if (Input.GetKeyDown(KeyCode.Escape) && Globals.paused == false && Globals.playerScript.battle == false)
         {
             Globals.paused = true;
+
             pauseMenu.SetActive(true);
         }
 
@@ -121,17 +122,24 @@ public class LevelMaster : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.F5))
         {
-            StartCoroutine(Globals.serializer.LoadMapData());
+            //StartCoroutine(Globals.serializer.LoadMapData());
 
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
             //instantiate babyslime at 0,0
-            GameObject testLoadEnemy = Resources.Load<GameObject>("Sprites/Enemies/BabySlime");
-            Instantiate(testLoadEnemy, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
+            //GameObject testLoadEnemy = Resources.Load<GameObject>("Sprites/Enemies/BabySlime");
+            //Instantiate(testLoadEnemy, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
+            //Globals.playerScript.quests.Add(new Quest("n", "d", false, 1));
+            Debug.Log(Globals.playerScript.quests[0].questName);
+            Debug.Log(Globals.playerScript.quests[0].description);
+            Debug.Log(Globals.playerScript.quests[0].complete);
+            Debug.Log(Globals.playerScript.quests[0].progress);
+           
         }              
     }
-       
+    
+    //used for little popups to show experience gained, items gained and level up
     IEnumerator FeedNotices()
     {
 
@@ -195,10 +203,60 @@ public class LevelMaster : MonoBehaviour {
                 //up counter and read next file.
                 counter++;
             Destroy(message);
-            Debug.Log(counter);
+            //Debug.Log(counter);
         }
-        Debug.Log("Close Text");
+        //Debug.Log("Close Text");
         Globals.playerScript.canMove = true;
+        yield return null;
+    }
+
+    public IEnumerator NPCDialouge(GameObject target)
+    {
+        NPC npc = target.GetComponent<NPC>();
+        npc.talking = true;
+        //base is held in NPC folder
+        //in the base folder is seperate options that will be chosen by dialouge set
+        //each file should be named "set"1, "set"2 etc
+
+        string path = "Assets/Resources/Dialouge/NPC/" + npc.dialogueBase + "/" + npc.dialogueSet;
+        int counter = 1;
+
+        //for each txt file in s dialouge's directory
+
+        foreach (string f in System.IO.Directory.GetFiles(path + "/", "*.txt"))
+        {
+            //load a message box
+            GameObject message = Instantiate(Resources.Load("MessageBox"), GameObject.Find("Canvas").transform) as GameObject;
+            message.GetComponentInChildren<Text>().text = "";
+
+            //read each line into the text box
+            //use _ to seperate set from the files
+            //Assets/Resources/Dialouge/NPC/Robes/Robes1/Robes1_1
+            string[] lines = System.IO.File.ReadAllLines(path + "/" + npc.dialogueSet + "_" + counter + ".txt");
+            foreach (string line in lines)
+            {// Display the file contents by using a foreach loop
+             //read out lines
+             //change this later
+
+                message.GetComponentInChildren<Text>().text += line + "\n";
+            }
+            do
+            {
+                //nothing
+                Globals.playerScript.canMove = false;
+                yield return null;
+            }
+            while (!Input.GetKeyDown(KeyCode.Space));
+            //wait for input ^^
+
+            //up counter and read next file.
+            counter++;
+            Destroy(message);
+            //Debug.Log(counter);
+        }
+        //Debug.Log("Close Text");
+        Globals.playerScript.canMove = true;
+        npc.talking = false;
         yield return null;
     }
 
@@ -364,14 +422,20 @@ public class LevelMaster : MonoBehaviour {
             //ex power 15, def 15, heal 20
             // power is 0-15, def is 16-30, heal is 31-50, normal is anything else
             int x = Random.Range(0, 100);
-            Debug.Log(x);
+            if(Globals.debug)
+            {
+                Globals.theDebugMenu.enemyMoveParameters.text = "0-" + enemy.powerAtkChance + "\t" + (enemy.powerAtkChance + 1) + "-" + (enemy.powerAtkChance + enemy.defChance) + "\t" + (enemy.powerAtkChance + enemy.defChance + 1) + "-" + (enemy.powerAtkChance + enemy.defChance + enemy.healChance) + "\t" + (enemy.powerAtkChance + enemy.defChance + enemy.healChance + 1) + "-100";
+            }         
             //power
             if (x <=  enemy.powerAtkChance && enemy.currentPowerAtkCooldown <= 0)
             {
                 enemyTempAtk = enemy.atk * enemy.powerAtkMult;
                 enemyTempDef = enemy.def;
                 enemy.currentPowerAtkCooldown = enemy.powerAtkCooldown;
-                Debug.Log("power attack, " + enemyTempAtk);
+                //Debug.Log("power attack, " + enemyTempAtk);
+
+                if(Globals.debug)
+                Globals.theDebugMenu.enemyNextMove.text = x + " Power Attack: " + enemyTempAtk;
             }
             //defend
             else if (x > enemy.powerAtkChance && x <= (enemy.powerAtkChance + enemy.defChance))
@@ -379,20 +443,29 @@ public class LevelMaster : MonoBehaviour {
                 enemyTempDef = enemy.def * enemy.defMult;
                 enemyEffectDef.SetActive(true);
                 enemyDefending = true;
-                Debug.Log("Defend, " + enemyTempDef);
+                //Debug.Log("Defend, " + enemyTempDef);
+
+                if(Globals.debug)
+                Globals.theDebugMenu.enemyNextMove.text = x + " Defend: " + enemyTempDef;
             }
             else if (x > (enemy.powerAtkChance + enemy.defChance) && x <= (enemy.powerAtkChance + enemy.defChance + enemy.healChance) && enemy.currentHealCooldown <= 0)
             {
                 enemyTempAtk = -10;
+                enemyTempDef = enemy.def;
                 enemy.currentHealCooldown = enemy.healCooldown;
-                Debug.Log("heal, " + (int)(enemy.health * enemy.healPerc));
+                //Debug.Log("heal, " + (int)(enemy.health * enemy.healPerc));
+
+                if(Globals.debug)
+                Globals.theDebugMenu.enemyNextMove.text = x + " Heal: " + (enemy.health * enemy.healPerc);
             }
             else //regular atk
             {
                 //these only used for when power attack or defend was chosen
                 enemyTempDef = enemy.def;
                 enemyTempAtk = -1;
-                Debug.Log("normal attack, " + enemy.atk);
+                //Debug.Log("normal attack, " + enemy.atk);
+                if(Globals.debug)
+                Globals.theDebugMenu.enemyNextMove.text = x + " Normal Attack: " + enemy.atk;
             }
 
 
@@ -417,7 +490,7 @@ public class LevelMaster : MonoBehaviour {
                     }
                     
                     enemyEffect.GetComponent<Image>().sprite = hit;
-                    Globals.soundEffectSource.PlayOneShot(Globals.soundHandler.soundEffect[1]);
+                    Globals.soundEffectSource.PlayOneShot(Globals.soundHandler.soundEffect[1]);                   
                     break;
                 case 1:
                     //power attack
@@ -441,10 +514,20 @@ public class LevelMaster : MonoBehaviour {
                     playerEffectDef.SetActive(true);
                     break;
                 case 3:
-                    //heal                    
-                    Globals.playerScript.currentHealth += Globals.playerScript.skills[battleMenuSelection].calculatedStrength;
+                    //heal            
+                    if(Globals.playerScript.maxHealth - Globals.playerScript.currentHealth < Globals.playerScript.skills[battleMenuSelection].calculatedStrength)
+                    {
+                        playerDamage.text = "+" + (Globals.playerScript.maxHealth - Globals.playerScript.currentHealth).ToString();
+                        Globals.playerScript.currentHealth = Globals.playerScript.maxHealth;                
+                    }
+                    else
+                    {
+                        Globals.playerScript.currentHealth += Globals.playerScript.skills[battleMenuSelection].calculatedStrength;
+                        playerDamage.text = "+" + Globals.playerScript.skills[battleMenuSelection].calculatedStrength.ToString();
+                    }
+                                           
                     playerEffect.GetComponent<Image>().sprite = heal;
-                    playerDamage.text = "+"+Globals.playerScript.skills[battleMenuSelection].calculatedStrength.ToString();
+                    
                     playerDamage.color = Color.green;
                     Globals.soundEffectSource.PlayOneShot(Globals.soundHandler.soundEffect[2]);
                     break;
@@ -529,12 +612,13 @@ public class LevelMaster : MonoBehaviour {
             //heal
             else if (!enemyDefending && enemyTempAtk == -10)
             {
-                if (enemy.currentHealth < (enemy.health * enemy.healPerc))
+                if (enemy.currentHealth < (enemy.health - (int)(enemy.health * enemy.healPerc)))
                     enemy.currentHealth += (int)(enemy.health * enemy.healPerc);
                 else
                     enemy.currentHealth = enemy.health;
 
                 enemyEffect.GetComponent<Image>().sprite = heal;
+                Debug.Log("Enemy Healed" + (int)(enemy.health * enemy.healPerc));
             }
             else
             {
@@ -614,7 +698,7 @@ public class LevelMaster : MonoBehaviour {
 
             }
             
-           notices.Add(enemy.xp.ToString() + "xp Gained");
+           notices.Add(enemy.xp.ToString() + "Xp Gained");
             Destroy(enemy.gameObject);
            //enemy.alive = false;          
            //enemy.gameObject.GetComponent<SpriteRenderer>().enabled = false;
@@ -630,9 +714,15 @@ public class LevelMaster : MonoBehaviour {
             Globals.playerScript.level += 1;
             Globals.playerScript.skillPoints += 1;
             Globals.playerScript.statPoints += 5;
+            
             Globals.playerScript.currentXP -= Globals.playerScript.xpToLevel;
             Globals.playerScript.xpToLevel += (int)Mathf.Pow(Globals.playerScript.level+1,2);
+            Globals.playerScript.UpdateStats();
+            Globals.playerScript.currentHealth = Globals.playerScript.maxHealth;
+            notices.Add("Level Up!");
         }
+       
+        Globals.playerScript.UpdateStats();
         UpdateUI();
     }
 

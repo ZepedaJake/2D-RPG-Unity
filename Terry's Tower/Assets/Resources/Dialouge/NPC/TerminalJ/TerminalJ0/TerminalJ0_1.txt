@@ -1,0 +1,2 @@
+New prototype weapons for guards have passed tesing.
+Updated models are complete and ready for deployment.

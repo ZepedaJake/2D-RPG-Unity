@@ -81,8 +81,8 @@ MonoBehaviour:
   health: 120
   currentHealth: 120
   atk: 14
-  def: 11
-  xp: 30
+  def: 15
+  xp: 25
   powerAtkChance: 10
   powerAtkCooldown: 3
   currentPowerAtkCooldown: 0

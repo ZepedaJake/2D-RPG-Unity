@@ -1,0 +1,4 @@
+Specimen Sublcass T Status:
+Mutations successful.
+No signs of life.
+Tests have been disposed of properly.

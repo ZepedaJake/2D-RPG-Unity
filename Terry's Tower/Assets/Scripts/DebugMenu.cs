@@ -8,16 +8,26 @@ public class DebugMenu : MonoBehaviour {
     public Text currentMap;
     public Text inputText;
     public Text messageText;
-	// Update is called once per frame
-	void FixedUpdate () {
-        currentMap.text = Globals.currentMap;
+    public Text enemyMoveParameters;
+    public Text enemyNextMove;
+
+    private void Start()
+    {
+        Globals.theDebugMenu = gameObject.GetComponent<DebugMenu>();
+    }
+    // Update is called once per frame
+    void FixedUpdate () {
+        currentMap.text = " Current Map " + Globals.currentMap;
 	}
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.End))
         {
-
+           if(inputText.text == "toggleNoClip")
+            {
+                Globals.Player.GetComponentInChildren<CapsuleCollider2D>().enabled = !Globals.Player.GetComponentInChildren<CapsuleCollider2D>().enabled;
+            }
         }
     }
 }

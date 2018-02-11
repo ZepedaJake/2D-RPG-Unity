@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4235769388281650}
   - component: {fileID: 212310561973865922}
   - component: {fileID: 61503009912933534}
+  - component: {fileID: 114340212030622988}
   m_Layer: 11
   m_Name: Robes
   m_TagString: NPC
@@ -50,7 +51,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -66,6 +67,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114340212030622988
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1094198408185976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04047d8b69c74244ca87d8711d324335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statToBoost: health
+  boostAmount: 300
+  talking: 0
+  questAvailableAt: 1.5
+  storyProgress:
+  - 1
+  - 1.5
+  - 10
+  questProgress:
+  - 1
+  - 2
+  dialogueBase: Robes
+  dialogueSet: 
+  questName: Eye Recovery
+  questDescription: Recover Robes' eye from the underworld.
 --- !u!212 &212310561973865922
 SpriteRenderer:
   m_ObjectHideFlags: 1

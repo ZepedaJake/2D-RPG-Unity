@@ -882,7 +882,7 @@ Prefab:
     - target: {fileID: 114697012047834340, guid: f51faa55f0005254f92822ae2af32b5c,
         type: 2}
       propertyPath: goToPoint.x
-      value: 12
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f51faa55f0005254f92822ae2af32b5c, type: 2}

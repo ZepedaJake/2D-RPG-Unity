@@ -78,21 +78,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c15af6fc068b5a849a3fd5cec9f3091a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
-  currentHealth: 50
-  atk: 10
-  def: 6
-  xp: 20
-  powerAtkChance: 15
-  powerAtkCooldown: 4
+  health: 3700
+  currentHealth: 3700
+  atk: 190
+  def: 102
+  xp: 222
+  powerAtkChance: 5
+  powerAtkCooldown: 2
   currentPowerAtkCooldown: 0
   powerAtkMult: 1.5
-  defChance: 15
-  defMult: 2
-  healChance: 15
-  healCooldown: 3
+  defChance: 25
+  defMult: 3
+  healChance: 35
+  healCooldown: 5
   currentHealCooldown: 0
-  healPerc: 0.15
+  healPerc: 0.25
   enemyName: CorruptedFemale
   alive: 1
   heldItem: 

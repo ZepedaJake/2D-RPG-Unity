@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BinaryObject : MonoBehaviour {
     // for doors / objects activated / deactivated by a trigger
+    public string objectName;//save
     public bool buttonState = false; //save
     public bool objectState = false; //save
     public bool canToggle; //save

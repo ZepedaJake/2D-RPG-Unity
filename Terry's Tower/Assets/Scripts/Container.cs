@@ -15,7 +15,7 @@ public class Container : MonoBehaviour
         //Globals.serializer.LoadItems();
         //Globals.serializer.LoadDoors();
         StartCoroutine(Globals.serializer.LoadMapData());
-        Globals.serializer.SavePlayerData();
+        //Globals.serializer.SavePlayerData();
         Globals.transition.endTrans = true;
     }
 
@@ -34,23 +34,10 @@ public class Container : MonoBehaviour
     {               
             GameObject newEnemy = Instantiate(Resources.Load<GameObject>("Sprites/Enemies/" + e), new Vector3(x, y, 0), new Quaternion(0, 0, 0, 0));
             
-               // newEnemy = Instantiate(enemies[(int)enemy], new Vector3(x, y, 0), new Quaternion(0, 0, 0, 0));
-            
-            
-            //if(i != null)
-            //{
-            //    newEnemy.GetComponent<EnemyBase>().heldItem = i;
-            //}
-            
             newEnemy.GetComponent<EnemyBase>().alive = a;
 
             newEnemy.GetComponent<SpriteRenderer>().enabled = a;
-            //Debug.Log(a);
-        //}
-       // foreach (Collider2D c in hitColliders)
-       // {
-           // Debug.Log(c);
-        //}
+       
     }
 
     public void CreateItem(string i, int v, int x, int y)
@@ -63,48 +50,25 @@ public class Container : MonoBehaviour
         {
             GameObject newItem = Instantiate(Resources.Load<GameObject>("Sprites/Items/Tower" + i), new Vector3(x, y, 0), new Quaternion(0, 0, 0, 0));
         }
-       
-        //GameObject newItem = Instantiate(items[(int)item], new Vector3(x, y, 0), new Quaternion(0, 0, 0, 0));
 
-        /*newItem.GetComponent<ItemBase>().active = a;
-        newItem.GetComponentInChildren<SpriteRenderer>().enabled = a;*/
     }
 
     public void CreateDoor(string n, int x, int y)
     {                         
         GameObject newItem = Instantiate(Resources.Load<GameObject>("Sprites/Doors/" + n), new Vector3(x, y, 0), new Quaternion(0, 0, 0, 0));
-
-        
-       
-        //GameObject newItem = Instantiate(doors[(int)item], new Vector3(x, y, 0), new Quaternion(0, 0, 0, 0));                                           
+                                              
     }
-    /*public void CreateDoor(string i, int x, int y)
-    {       
-        try
-        {
-            GameObject newItem = Instantiate(Resources.Load<GameObject>("Sprites/Doors/Tower" + i + "Front"), new Vector3(x, y, 0), new Quaternion(0, 0, 0, 0));
 
-        }
-        catch
-        {
-            if (i == "SilverDoorSide")
-            {
-                GameObject newItem = Instantiate(Resources.Load<GameObject>("Sprites/Doors/TowerSilverDoorSide"), new Vector3(x, y, 0), new Quaternion(0, 0, 0, 0));
-            }
-            else if (i == "BronzeDoorSide")
-            {
-                GameObject newItem = Instantiate(Resources.Load<GameObject>("Sprites/Doors/TowerBronzeDoorSide"), new Vector3(x, y, 0), new Quaternion(0, 0, 0, 0));
-            }
-            else if (i == "GoldDoorSide")
-            {
-                GameObject newItem = Instantiate(Resources.Load<GameObject>("Sprites/Doors/TowerGoldDoorSide"), new Vector3(x, y, 0), new Quaternion(0, 0, 0, 0));
-            }
-            else
-            {
-                GameObject newItem = Instantiate(Resources.Load<GameObject>("Sprites/Doors/" + i), new Vector3(x, y, 0), new Quaternion(0, 0, 0, 0));
-            }
-        }
+    public void CreateBinaryObject(string n, bool bs, bool os, int bx, int by, int ox, int oy, bool t)
+    {
+        GameObject newItem = Instantiate(Resources.Load<GameObject>("Sprites/Doors/" + n), new Vector3(bx, by, 0), new Quaternion(0, 0, 0, 0));
+        BinaryObject newObject = newItem.GetComponent<BinaryObject>();
 
-        //GameObject newItem = Instantiate(doors[(int)item], new Vector3(x, y, 0), new Quaternion(0, 0, 0, 0));                                           
-    }*/
+        newObject.buttonState = bs;
+        newObject.objectState = os;
+        newObject.objectLocationX = ox;
+        newObject.objectLocationY = oy;
+        newObject.canToggle = t;
+
+    }
 }

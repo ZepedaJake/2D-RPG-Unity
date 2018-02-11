@@ -107,7 +107,7 @@ public class MainMenu : MonoBehaviour {
             Globals.serializer.LoadPlayerData();
             Globals.theLevelMaster.ui.SetActive(true);
             Globals.theLevelMaster.UpdateUI();
-            SceneManager.UnloadSceneAsync("00-00");
+            //SceneManager.UnloadSceneAsync("00-00");
 
         }
         else
@@ -123,7 +123,7 @@ public class MainMenu : MonoBehaviour {
         if (File.Exists(Path.Combine(Globals.serializer.saveData, "player.json")))
         {
             Globals.theLevelMaster.boolBox.SetActive(true);
-            Globals.theLevelMaster.boolBox.GetComponent<BoolBox>().question.text = "There is already save data\nWould you like to delete it?";
+            Globals.theLevelMaster.boolBox.GetComponent<BoolBox>().question.text = "There is already save data\nWould you like to delete it?\n";
             Globals.theLevelMaster.boolBox.GetComponent<BoolBox>().function = "DeleteOldGame";
             Globals.theLevelMaster.boolBox.GetComponent<BoolBox>().objectInQuestion = gameObject;
         }
@@ -166,10 +166,35 @@ public class MainMenu : MonoBehaviour {
 
         Globals.currentMap = "01-01";
         //Globals.soundHandler.SetMusic(0);
-        Globals.theLevelMaster.UpdateUI();
-        Globals.playerScript.storyProgress = 1;
-        //SceneManager.UnloadSceneAsync("00-00");
         
+        Globals.playerScript.storyProgress = 1;
+        Globals.playerScript.level = 1;
+        Globals.playerScript.statPoints = 5;
+        Globals.playerScript.skillPoints = 1;
+        Globals.playerScript.spentStatPoints = 0;
+        Globals.playerScript.spentSkillPoints = 0;
+
+        Globals.playerScript.maxHealth = 100;
+        Globals.playerScript.currentHealth = 100;
+
+        Globals.playerScript.currentXP = 0;
+        Globals.playerScript.xpToLevel = 10;
+
+        Globals.playerScript.atk = 0;
+        Globals.playerScript.atkItemBonus = -0;
+        Globals.playerScript.statAtk = 0;
+
+        Globals.playerScript.def = 0;
+        Globals.playerScript.defItemBonus = 0;
+        Globals.playerScript.statDef = 0;
+
+        Globals.playerScript.bronzeKeys = 0;
+        Globals.playerScript.silverKeys = 0;
+        Globals.playerScript.goldKeys = 0;
+
+        Globals.playerScript.redOrbState = 0; //0 = not placed, 1 = 1st pedestal, 2 = end pedestal  
+        Globals.playerScript.blueOrbState = 0;
+        Globals.theLevelMaster.UpdateUI();
         yield return null;
     }
 

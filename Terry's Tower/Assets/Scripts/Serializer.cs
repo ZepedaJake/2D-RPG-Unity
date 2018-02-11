@@ -67,6 +67,11 @@ public class Serializer : MonoBehaviour {
             defItemBonus = player.defItemBonus,
             statDef = player.statDef,
 
+            skill1Lvl = player.skills[0].level,
+            skill2Lvl = player.skills[1].level,
+            skill3Lvl = player.skills[2].level,
+            skill4Lvl = player.skills[3].level,
+
             lookingX = (int)player.looking.x,
             lookingY = (int)player.looking.y,
             direction = player.direction,
@@ -78,12 +83,22 @@ public class Serializer : MonoBehaviour {
             currentMap = Globals.currentMap,
 
             redOrbState = player.redOrbState,
-            redOrbActivated = player.redOrbActivated,
             blueOrbState = player.blueOrbState,
-            blueOrbActivated = player.blueOrbActivated,
-            storyProgress = player.storyProgress
+            storyProgress = player.storyProgress,
 
+            sideQuests = new List<PlayerSaveData.PlayerQuests>()
         };
+
+        foreach(Quest q in player.quests)
+        {
+            PlayerSaveData.PlayerQuests quest = new PlayerSaveData.PlayerQuests();
+            quest.questName = q.questName;
+            quest.description = q.description;
+            quest.complete = q.complete;
+            quest.progress = q.progress;
+
+            playerData.sideQuests.Add(quest);
+        }
 
         string json = JsonUtility.ToJson(playerData);             
         
@@ -99,7 +114,7 @@ public class Serializer : MonoBehaviour {
         SavePlayerInventory();
 
         //Debug.Log(json);
-        //Debug.Log(fileName);
+        Debug.Log(fileName);
     }
 
     public void SavePlayerInventory()
@@ -163,7 +178,7 @@ public class Serializer : MonoBehaviour {
         loadFile = File.ReadAllText(fileName);
 
         PlayerSaveData load = JsonUtility.FromJson<PlayerSaveData>(loadFile);
-        Debug.Log(load.level+ "" + load.statPoints+""+ load.skillPoints+ "" +load.currentMap);
+        //Debug.Log(load.level+ "" + load.statPoints+""+ load.skillPoints+ "" +load.currentMap);
 
         player.level = load.level;
         player.statPoints = load.statPoints;
@@ -185,6 +200,11 @@ public class Serializer : MonoBehaviour {
         player.statDef = load.statDef;
         player.defItemBonus = load.defItemBonus;
 
+        player.skills[0].level = load.skill1Lvl;
+        player.skills[1].level = load.skill2Lvl;
+        player.skills[2].level = load.skill3Lvl;
+        player.skills[3].level = load.skill4Lvl;
+
         player.looking = new Vector2(load.lookingX, load.lookingY);
         player.direction = load.direction;
 
@@ -193,10 +213,30 @@ public class Serializer : MonoBehaviour {
         player.goldKeys = load.goldKeys;
 
         player.redOrbState = load.redOrbState;
-        player.redOrbActivated = load.redOrbActivated;
         player.blueOrbState = load.blueOrbState;
-        player.blueOrbActivated = load.blueOrbActivated;
 
+        player.storyProgress = load.storyProgress;
+
+        //for (int x = 0; x < load.sideQuests.Count; x++)
+        //    {
+        //        Debug.Log(load.sideQuests[x].questName);
+        //        Debug.Log(load.sideQuests[x].description);
+        //        Debug.Log(load.sideQuests[x].complete);
+        //        Debug.Log(load.sideQuests[x].progress);
+        //    player.quests.Add(new Quest(load.sideQuests[x].questName, load.sideQuests[x].description, load.sideQuests[x].complete, load.sideQuests[0].progress));
+
+        //}
+        foreach (PlayerSaveData.PlayerQuests q in load.sideQuests)
+        {
+            //Debug.Log(q.questName);
+            //Debug.Log(q.description);
+            //Debug.Log(q.complete);
+            //Debug.Log(q.progress);
+            player.quests.Add(new Quest(q.questName, q.description, q.complete, q.progress));
+
+            //Debug.Log(player.quests[0].questName);
+
+        }
         LoadPlayerInventory();
     }
 
@@ -656,7 +696,8 @@ public class Serializer : MonoBehaviour {
         {
             mapDoorInfo = new List<MapData.Door>(),
             mapEnemyInfo = new List<MapData.Enemy>(),
-            mapItemInfo = new List<MapData.Item>()
+            mapItemInfo = new List<MapData.Item>(),
+            mapBinaryObjectInfo = new List<MapData.BinaryObject>()
             
         };
 
@@ -731,6 +772,34 @@ public class Serializer : MonoBehaviour {
             Debug.Log("problem saving enemies");
         }
 
+        //Save BinaryItems
+        try
+        {
+            foreach(GameObject binary in GameObject.FindGameObjectsWithTag("Button"))
+            {
+                BinaryObject currentObject = binary.GetComponent<BinaryObject>();
+
+                MapData.BinaryObject newObject = new MapData.BinaryObject();
+                {
+                    newObject.objectName = currentObject.objectName.ToString();
+                    newObject.buttonState = currentObject.buttonState;
+                    newObject.objectState = currentObject.objectState;
+                    newObject.buttonX = (int)currentObject.transform.position.x;
+                    newObject.buttonY = (int)currentObject.transform.position.y;
+                    newObject.objectX = currentObject.objectLocationX;
+                    newObject.objectY = currentObject.objectLocationY;
+                    newObject.canToggle = currentObject.canToggle;
+
+                }
+            }
+        }
+        catch
+        {
+            //nothing to save
+        }
+           
+        
+
         string json = JsonUtility.ToJson(mapData);
       
         if(d == true)
@@ -740,6 +809,7 @@ public class Serializer : MonoBehaviour {
         }
         else
         {
+            fileName = Path.Combine(saveData, Globals.currentMap + ".json");
             Debug.Log(d);
         }
             
@@ -812,6 +882,20 @@ public class Serializer : MonoBehaviour {
                     MapData.Enemy e = load.mapEnemyInfo[x];
                     itemContainer.CreateEnemy(e.enemyName, e.posX, e.posY,e.alive,e.heldItem);
                     load.mapEnemyInfo.RemoveAt(x);
+                }
+            }
+            catch
+            {
+
+            }
+
+            try
+            {
+                for (int x = load.mapBinaryObjectInfo.Count - 1; x > -1; x--)
+                {
+                    MapData.BinaryObject o = load.mapBinaryObjectInfo[x];
+                    itemContainer.CreateBinaryObject(o.objectName, o.buttonState, o.objectState, o.buttonX, o.buttonY, o.objectX, o.objectY, o.canToggle);
+                    load.mapBinaryObjectInfo.RemoveAt(x);
                 }
             }
             catch

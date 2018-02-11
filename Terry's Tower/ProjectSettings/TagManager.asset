@@ -19,6 +19,7 @@ TagManager:
   - DialougeTrigger
   - Fountain
   - Button
+  - Terminal
   layers:
   - Default
   - TransparentFX

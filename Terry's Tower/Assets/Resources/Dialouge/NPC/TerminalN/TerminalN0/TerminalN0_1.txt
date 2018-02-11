@@ -1,0 +1,2 @@
+Specimen T7 Status:
+ERROR! Object not detected.

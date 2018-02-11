@@ -25,6 +25,11 @@ public class PlayerSaveData
     public int defItemBonus;
     public int statDef;
 
+    public int skill1Lvl;
+    public int skill2Lvl;
+    public int skill3Lvl;
+    public int skill4Lvl;
+
     public int lookingX;
     public int lookingY;
     public string direction;
@@ -36,11 +41,21 @@ public class PlayerSaveData
     public string currentMap;
 
     public int redOrbState;
-    public bool redOrbActivated;
     public int blueOrbState;
-    public bool blueOrbActivated;
+   
 
-    public int storyProgress;
+    public float storyProgress;
+
+    [Serializable]
+    public struct PlayerQuests
+    {    
+        public string questName;
+        public string description;
+        public bool complete;
+        public float progress;
+    }
+
+    public List<PlayerQuests> sideQuests;
 }
 
 //[Serializable]
@@ -106,6 +121,8 @@ public class PlayerInventory
     public List<InventoryItemBase> inventoryItems;
 }
 
+
+
 [Serializable]
 public struct MapData
 {
@@ -144,5 +161,20 @@ public struct MapData
     }
 
     public List<Door> mapDoorInfo;
+
+    [Serializable]
+    public struct BinaryObject
+    {
+        public string objectName;
+        public bool buttonState;
+        public bool objectState;
+        public int buttonX;
+        public int buttonY;
+        public int objectX;
+        public int objectY;
+        public bool canToggle;
+    }
+
+    public List<BinaryObject> mapBinaryObjectInfo;
 }
 

@@ -13,7 +13,7 @@ static public class Globals
     static public LevelMaster theLevelMaster;
     static public Serializer serializer;
     static public string currentMap;
-
+    static public DebugMenu theDebugMenu;
     
     static public bool debug = false;
 

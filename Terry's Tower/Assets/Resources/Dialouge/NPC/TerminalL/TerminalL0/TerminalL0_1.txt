@@ -1,0 +1,4 @@
+System Status: 
+All internal systems are running.
+Currently unable to connect outside of the laboratory.
+Currently unable to sync global time.

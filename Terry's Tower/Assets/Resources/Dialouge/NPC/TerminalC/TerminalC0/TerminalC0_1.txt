@@ -1,0 +1,3 @@
+Specimen Subclass R Status-
+All Growths Failed.
+Tests have been disposed of properly.

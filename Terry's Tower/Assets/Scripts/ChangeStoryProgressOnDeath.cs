@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class ChangeStoryProgressOnDeath : MonoBehaviour {
 
-    public int setStoryProgress;
+    public float setStoryProgress;
 }

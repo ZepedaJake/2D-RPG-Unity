@@ -845,7 +845,6 @@ Transform:
   - {fileID: 842159339}
   - {fileID: 286896057}
   - {fileID: 556501142}
-  - {fileID: 1244651538}
   - {fileID: 1732792528}
   - {fileID: 1031287842}
   - {fileID: 649938770}
@@ -2389,7 +2388,7 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 290829263}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 433762, guid: 5dc04651a552af94c9192adc0169c8f9, type: 2}
       propertyPath: m_LocalPosition.x
@@ -2421,7 +2420,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 433762, guid: 5dc04651a552af94c9192adc0169c8f9, type: 2}
       propertyPath: m_RootOrder
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 101698, guid: 5dc04651a552af94c9192adc0169c8f9, type: 2}
       propertyPath: m_Name
@@ -4368,17 +4367,25 @@ Transform:
 GameObject:
   m_PrefabParentObject: {fileID: 101698, guid: 5dc04651a552af94c9192adc0169c8f9, type: 2}
   m_PrefabInternal: {fileID: 727680561}
---- !u!4 &1244651538 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 433762, guid: 5dc04651a552af94c9192adc0169c8f9, type: 2}
-  m_PrefabInternal: {fileID: 727680561}
---- !u!114 &1244651539
+--- !u!114 &1244651538
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1244651537}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ca9b3d321ef5d14eb7f6cf20eda3f5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyPastThisStoryPoint: 1.2
+--- !u!114 &1244651539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1244651537}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1febcd359fbff834da98a12c38a1321e, type: 3}
   m_Name: 
@@ -5938,7 +5945,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 406782, guid: 81abc26df6fd70147acacf6de5e956ef, type: 2}
       propertyPath: m_RootOrder
-      value: 21
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6119266, guid: 81abc26df6fd70147acacf6de5e956ef, type: 2}
       propertyPath: m_Offset.x

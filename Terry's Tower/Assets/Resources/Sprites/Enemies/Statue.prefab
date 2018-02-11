@@ -80,7 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1000
   currentHealth: 1000
-  atk: 1000
+  atk: 1
   def: 1000
   xp: 500
   powerAtkChance: 30

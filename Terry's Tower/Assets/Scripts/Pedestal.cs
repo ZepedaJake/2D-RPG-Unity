@@ -11,6 +11,7 @@ public class Pedestal : MonoBehaviour {
     public GameObject glow;
     public GameObject item;
     public GameObject color;
+    public float setStoryTo;
 	// Update is called once per frame
 	void Update () {
 		
@@ -30,13 +31,13 @@ public class Pedestal : MonoBehaviour {
                 Globals.playerScript.inventory.RemoveAt(index);
             }
             catch { }
-            Globals.playerScript.redOrbState = 1;
-
-
-            if (!Globals.playerScript.redOrbActivated)
+            Globals.playerScript.redOrbState = 1;  
+            
+            //update story progress to show that orb was placed 
+            if(Globals.playerScript.storyProgress < setStoryTo)
             {
-                Globals.playerScript.redOrbActivated = true;
-            }          
+                Globals.playerScript.storyProgress = setStoryTo;
+            }
         }
         ChangeOrbState();
     }

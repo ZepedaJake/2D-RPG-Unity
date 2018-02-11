@@ -5,6 +5,10 @@ using UnityEngine;
 public class Notes : MonoBehaviour {
 
     /*
+    PROBLEMS
+    need to recode skills so that they can easily be saved
+    need to find a way to destroy ALL objects when selecting quit from pause menu
+     
       TODO:
 balance enemies
 interaction with Robes on 02-10-11   

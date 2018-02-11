@@ -28,9 +28,13 @@ public class SkillMenu : MonoBehaviour {
 
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void OnEnable()
+    {
+        UpdateSkills();   
+    }
+    // Update is called once per frame
+    void Update () {
         if (Input.GetKeyDown(KeyCode.W))
         {
             if (selectedButton > 0 )
@@ -96,9 +100,10 @@ public class SkillMenu : MonoBehaviour {
             }
         }
     }
+
     void BasicAttackUp()
     {
-        if (Globals.playerScript.skillPoints > 0)
+        if (Globals.playerScript.skillPoints > 0 && Globals.playerScript.skills[selectedButton].level<10)
         {
             Globals.playerScript.skills[selectedButton].level += 1;
             Globals.playerScript.skillPoints -= 1;
@@ -110,7 +115,7 @@ public class SkillMenu : MonoBehaviour {
 
     void PowerAttackUp()
     {
-        if (Globals.playerScript.skillPoints > 0)
+        if (Globals.playerScript.skillPoints > 0 && Globals.playerScript.skills[selectedButton].level < 10)
         {
             Globals.playerScript.skills[selectedButton].level += 1;
             Globals.playerScript.skillPoints -= 1;
@@ -122,7 +127,7 @@ public class SkillMenu : MonoBehaviour {
 
     void DefendUp()
     {
-        if (Globals.playerScript.skillPoints > 0)
+        if (Globals.playerScript.skillPoints > 0 && Globals.playerScript.skills[selectedButton].level < 10)
         {
             Globals.playerScript.skills[selectedButton].level += 1;
             Globals.playerScript.skillPoints -= 1;
@@ -133,7 +138,7 @@ public class SkillMenu : MonoBehaviour {
 
     void HealUp()
     {
-        if (Globals.playerScript.skillPoints > 0)
+        if (Globals.playerScript.skillPoints > 0 && Globals.playerScript.skills[selectedButton].level < 10)
         {
             Globals.playerScript.skills[selectedButton].level += 1;
             Globals.playerScript.skillPoints -= 1;

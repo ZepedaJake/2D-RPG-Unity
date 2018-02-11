@@ -1,0 +1,2 @@
+Solar Status:
+ERROR! Unable to update information

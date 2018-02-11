@@ -78,11 +78,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c15af6fc068b5a849a3fd5cec9f3091a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 40
   currentHealth: 50
   atk: 10
-  def: 6
-  xp: 20
+  def: 5
+  xp: 15
   powerAtkChance: 15
   powerAtkCooldown: 4
   currentPowerAtkCooldown: 0

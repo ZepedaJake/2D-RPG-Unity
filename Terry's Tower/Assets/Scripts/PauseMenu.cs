@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour {
 
@@ -72,7 +73,7 @@ public class PauseMenu : MonoBehaviour {
                         Close();
                         break;
                     case 5:
-                        Quit();
+                        StartCoroutine(Quit());
                         break;
                     default:
                         break;
@@ -131,8 +132,26 @@ public class PauseMenu : MonoBehaviour {
 
     }
 
-    public void Quit()
-    {
+    
 
+    IEnumerator Quit()
+    {
+        
+        Globals.serializer.SavePlayerData();
+        Globals.serializer.SaveMapData(false);
+        Globals.transition.startTrans = true;
+        
+        
+
+        yield return new WaitForSeconds(1.5f);
+        
+        Globals.playerScript.gameObject.transform.position = new Vector2(0, 0);
+        Globals.theLevelMaster.UpdateUI();
+        gameObject.SetActive(false);
+        Globals.paused = false;
+        SceneManager.LoadScene("00-01");
+        Globals.theLevelMaster.ui.SetActive(false);
+
+        yield return null;
     }
 }

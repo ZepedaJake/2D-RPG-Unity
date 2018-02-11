@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: dbaedd6e3f2a1f8409c89f53da58a99b
-timeCreated: 1506086345
+timeCreated: 1507266851
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -55,6 +55,13 @@ TextureImporter:
     21300096: LabSprites_48
     21300098: LabSprites_49
     21300100: LabSprites_50
+    21300102: LabSprites_51
+    21300104: LabSprites_52
+    21300106: LabSprites_53
+    21300108: LabSprites_54
+    21300110: LabSprites_55
+    21300112: LabSprites_56
+    21300114: LabSprites_57
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -775,6 +782,97 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 320
+        y: 544
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LabSprites_51
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 544
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LabSprites_52
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 544
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LabSprites_53
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 544
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LabSprites_54
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 544
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LabSprites_55
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 544
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LabSprites_56
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 544
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LabSprites_57
+      rect:
+        serializedVersion: 2
+        x: 544
         y: 544
         width: 32
         height: 32
